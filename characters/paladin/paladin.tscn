@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkuaoq55xkhys"]
+
+[ext_resource type="PackedScene" uid="uid://dtk0mr0pqbnpk" path="res://characters/paladin/assets/model/char_paladin.glb" id="1_j6xx5"]
+[ext_resource type="AnimationLibrary" uid="uid://dwe1xsf11l8pq" path="res://characters/paladin/char_paladin_anims.tres" id="3_2xo38"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_j6xx5"]
+states/End/position = Vector2(916, 109)
+states/Start/position = Vector2(192, 109)
+
+[node name="Paladin" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_j6xx5")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Model"]
+libraries = {
+&"char_paladin_anims": ExtResource("3_2xo38")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Model")
+tree_root = SubResource("AnimationNodeStateMachine_j6xx5")
+anim_player = NodePath("../Model/AnimationPlayer")
+
+[editable path="Model"]
