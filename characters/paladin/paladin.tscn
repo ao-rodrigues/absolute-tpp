@@ -1,22 +1,22 @@
 [gd_scene load_steps=14 format=3 uid="uid://bkuaoq55xkhys"]
 
-[ext_resource type="PackedScene" uid="uid://dlwb2832unnid" path="res://characters/paladin/assets/model/char_paladin.glb" id="1_j6xx5"]
+[ext_resource type="PackedScene" uid="uid://dx33qhbbfxt3p" path="res://characters/paladin/assets/models/char_paladin.glb" id="1_j6xx5"]
 [ext_resource type="AnimationLibrary" uid="uid://dwe1xsf11l8pq" path="res://characters/paladin/char_paladin_anims.tres" id="3_2xo38"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j6xx5"]
-animation = &"char_paladin_anims/paladin_run_forward"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_df2lw"]
-animation = &"char_paladin_anims/paladin_run_backwards"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dsf0d"]
-animation = &"char_paladin_anims/paladin_strafe_run_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xo38"]
 animation = &"char_paladin_anims/paladin_idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_df2lw"]
+animation = &"char_paladin_anims/paladin_run_forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dsf0d"]
+animation = &"char_paladin_anims/paladin_run_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xo38"]
+animation = &"char_paladin_anims/paladin_strafe_run_right"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dotea"]
-animation = &"char_paladin_anims/paladin_strafe_walk_right"
+animation = &"char_paladin_anims/paladin_strafe_run_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wu53v"]
 animation = &"char_paladin_anims/paladin_walk_forward"
@@ -25,36 +25,36 @@ animation = &"char_paladin_anims/paladin_walk_forward"
 animation = &"char_paladin_anims/paladin_walk_backwards"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_61qk6"]
-animation = &"char_paladin_anims/paladin_strafe_run_left"
+animation = &"char_paladin_anims/paladin_strafe_walk_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqlio"]
-animation = &"char_paladin_anims/paladin_strafe_walk_left"
+animation = &"char_paladin_anims/paladin_strafe_walk_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_h15nu"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_j6xx5")
-blend_point_0/pos = Vector2(0, 1)
+blend_point_0/pos = Vector2(0, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_df2lw")
-blend_point_1/pos = Vector2(0, -1)
+blend_point_1/pos = Vector2(0, 1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_dsf0d")
-blend_point_2/pos = Vector2(1, 0)
+blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_2xo38")
-blend_point_3/pos = Vector2(0, 0)
+blend_point_3/pos = Vector2(1, 0)
 blend_point_4/node = SubResource("AnimationNodeAnimation_dotea")
-blend_point_4/pos = Vector2(0.5, 0)
+blend_point_4/pos = Vector2(-1, 0)
 blend_point_5/node = SubResource("AnimationNodeAnimation_wu53v")
 blend_point_5/pos = Vector2(0, 0.5)
 blend_point_6/node = SubResource("AnimationNodeAnimation_vthc6")
 blend_point_6/pos = Vector2(0, -0.5)
 blend_point_7/node = SubResource("AnimationNodeAnimation_61qk6")
-blend_point_7/pos = Vector2(-1, 0)
+blend_point_7/pos = Vector2(-0.5, 0)
 blend_point_8/node = SubResource("AnimationNodeAnimation_gqlio")
-blend_point_8/pos = Vector2(-0.5, 0)
+blend_point_8/pos = Vector2(0.5, 0)
 sync = true
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_j6xx5"]
-graph_offset = Vector2(-459, 1)
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6ceax"]
+graph_offset = Vector2(-458, 6)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_h15nu")
-nodes/BlendSpace2D/position = Vector2(-40, 80)
+nodes/BlendSpace2D/position = Vector2(-20, 140)
 node_connections = [&"output", 0, &"BlendSpace2D"]
 
 [node name="Paladin" type="Node3D"]
@@ -70,6 +70,9 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Model")
 root_motion_track = NodePath("Armature/Skeleton3D:mixamorig_Root")
-tree_root = SubResource("AnimationNodeBlendTree_j6xx5")
+tree_root = SubResource("AnimationNodeBlendTree_6ceax")
 anim_player = NodePath("../AnimationPlayer")
-parameters/BlendSpace2D/blend_position = Vector2(-0.39363056, -0.064171076)
+parameters/BlendSpace2D/blend_position = Vector2(0.007643342, -0.026737928)
+
+[node name="RootMotionView" type="RootMotionView" parent="."]
+animation_path = NodePath("../AnimationTree")

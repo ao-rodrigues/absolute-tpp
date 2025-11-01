@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://do361i3pqubhb"
-path="res://.godot/imported/char_paladin_anims.glb-8847fe4f8a5e891beea0f02e63f0e8bd.scn"
+uid="uid://st6tq6rbnu4v"
+path="res://.godot/imported/char_paladin_anims_movement.glb-e24a996efcf4b8006e2e7629ac5bfac1.scn"
 
 [deps]
 
-source_file="res://characters/paladin/assets/animations/char_paladin_anims.glb"
-dest_files=["res://.godot/imported/char_paladin_anims.glb-8847fe4f8a5e891beea0f02e63f0e8bd.scn"]
+source_file="res://characters/paladin/assets/animations/char_paladin_anims_movement.glb"
+dest_files=["res://.godot/imported/char_paladin_anims_movement.glb-e24a996efcf4b8006e2e7629ac5bfac1.scn"]
 
 [params]
 

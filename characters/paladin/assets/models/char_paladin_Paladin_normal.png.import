@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpov80aa0v63c"
-path.s3tc="res://.godot/imported/char_paladin_Paladin_normal.png-f638ee1ee8524de57f7af725c3489329.s3tc.ctex"
+uid="uid://wjj2yf3pmvq8"
+path.s3tc="res://.godot/imported/char_paladin_Paladin_normal.png-e4559da9e41ac50d1624cca3c72d46eb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://characters/paladin/assets/model/char_paladin_Paladin_normal.png"
-dest_files=["res://.godot/imported/char_paladin_Paladin_normal.png-f638ee1ee8524de57f7af725c3489329.s3tc.ctex"]
+source_file="res://characters/paladin/assets/models/char_paladin_Paladin_normal.png"
+dest_files=["res://.godot/imported/char_paladin_Paladin_normal.png-e4559da9e41ac50d1624cca3c72d46eb.s3tc.ctex"]
 
 [params]
 
@@ -30,7 +30,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://characters/paladin/assets/model/char_paladin_Paladin_normal.png"
+roughness/src_normal="res://characters/paladin/assets/models/char_paladin_Paladin_normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

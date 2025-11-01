@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkqh6rhrqbs5"
-path="res://.godot/imported/char_paladin_Paladin_specular.png-a46ffcb32525c4619abd2b100a9dc944.ctex"
+uid="uid://b1agxli0mgwmx"
+path.s3tc="res://.godot/imported/char_paladin_Paladin_diffuse.png-afad45d500ed47903506693600ddbce0.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "962b1421aaea77bc700e817f8bc098a1"
+"md5": "08dad13d18a3ee6dc4be544f4a8a7e42"
 }
 
 [deps]
 
-source_file="res://characters/paladin/assets/model/char_paladin_Paladin_specular.png"
-dest_files=["res://.godot/imported/char_paladin_Paladin_specular.png-a46ffcb32525c4619abd2b100a9dc944.ctex"]
+source_file="res://characters/paladin/assets/models/char_paladin_Paladin_diffuse.png"
+dest_files=["res://.godot/imported/char_paladin_Paladin_diffuse.png-afad45d500ed47903506693600ddbce0.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
