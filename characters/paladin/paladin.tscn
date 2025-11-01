@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkuaoq55xkhys"]
+[gd_scene load_steps=11 format=3 uid="uid://bkuaoq55xkhys"]
 
 [ext_resource type="PackedScene" uid="uid://dx33qhbbfxt3p" path="res://characters/paladin/assets/models/char_paladin.glb" id="1_j6xx5"]
 [ext_resource type="AnimationLibrary" uid="uid://dwe1xsf11l8pq" path="res://characters/paladin/char_paladin_anims.tres" id="3_2xo38"]
@@ -7,10 +7,10 @@
 animation = &"char_paladin_anims/paladin_idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_df2lw"]
-animation = &"char_paladin_anims/paladin_run_forward"
+animation = &"char_paladin_anims/paladin_run_backwards"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dsf0d"]
-animation = &"char_paladin_anims/paladin_run_backwards"
+animation = &"char_paladin_anims/paladin_run_forward"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xo38"]
 animation = &"char_paladin_anims/paladin_strafe_run_right"
@@ -18,46 +18,29 @@ animation = &"char_paladin_anims/paladin_strafe_run_right"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dotea"]
 animation = &"char_paladin_anims/paladin_strafe_run_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wu53v"]
-animation = &"char_paladin_anims/paladin_walk_forward"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vthc6"]
-animation = &"char_paladin_anims/paladin_walk_backwards"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_61qk6"]
-animation = &"char_paladin_anims/paladin_strafe_walk_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqlio"]
-animation = &"char_paladin_anims/paladin_strafe_walk_right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_h15nu"]
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wu53v"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_j6xx5")
 blend_point_0/pos = Vector2(0, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_df2lw")
-blend_point_1/pos = Vector2(0, 1)
+blend_point_1/pos = Vector2(0, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_dsf0d")
-blend_point_2/pos = Vector2(0, -1)
+blend_point_2/pos = Vector2(0, 1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_2xo38")
 blend_point_3/pos = Vector2(1, 0)
 blend_point_4/node = SubResource("AnimationNodeAnimation_dotea")
 blend_point_4/pos = Vector2(-1, 0)
-blend_point_5/node = SubResource("AnimationNodeAnimation_wu53v")
-blend_point_5/pos = Vector2(0, 0.5)
-blend_point_6/node = SubResource("AnimationNodeAnimation_vthc6")
-blend_point_6/pos = Vector2(0, -0.5)
-blend_point_7/node = SubResource("AnimationNodeAnimation_61qk6")
-blend_point_7/pos = Vector2(-0.5, 0)
-blend_point_8/node = SubResource("AnimationNodeAnimation_gqlio")
-blend_point_8/pos = Vector2(0.5, 0)
 sync = true
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6ceax"]
-graph_offset = Vector2(-458, 6)
-nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_h15nu")
-nodes/BlendSpace2D/position = Vector2(-20, 140)
-node_connections = [&"output", 0, &"BlendSpace2D"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vthc6"]
+graph_offset = Vector2(-650, -25)
+nodes/Locomotion/node = SubResource("AnimationNodeBlendSpace2D_wu53v")
+nodes/Locomotion/position = Vector2(20, 120)
+node_connections = [&"output", 0, &"Locomotion"]
 
-[node name="Paladin" type="Node3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pqxw7"]
+height = 1.7216797
+
+[node name="Paladin" type="CharacterBody3D"]
 
 [node name="Model" parent="." instance=ExtResource("1_j6xx5")]
 
@@ -70,9 +53,13 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Model")
 root_motion_track = NodePath("Armature/Skeleton3D:mixamorig_Root")
-tree_root = SubResource("AnimationNodeBlendTree_6ceax")
+tree_root = SubResource("AnimationNodeBlendTree_vthc6")
 anim_player = NodePath("../AnimationPlayer")
-parameters/BlendSpace2D/blend_position = Vector2(0.007643342, -0.026737928)
+parameters/Locomotion/blend_position = Vector2(0.6101911, 0.22459888)
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8622335, 0)
+shape = SubResource("CylinderShape3D_pqxw7")
